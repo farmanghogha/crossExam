@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let product of productlist">
+            <div class="card card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <h5>{{product.name}}</h5>
+                        <p>{{product.description}}</p>
+                        <p>{{product.price}}</p>
+                    </div>
+                    <div class="col-6">
+                        <img src="./assets/images/images.jpg" alt="">
+                    </div>
+                </div>
+              
+                <div class="row">
+                    <div class="col-6 offset-3">
+                        <a class="btn btn-success" (click)="addtocart(product)" >AddTo Cart</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

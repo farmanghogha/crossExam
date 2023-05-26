@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row m-4">
+        <div class="row mb-2">
+            <div class="col-6">
+                <h1>Address List</h1>
+            </div>
+            <div class="col-6 text-end">
+                <a class="btn btn-primary" routerLink="/addadress"><i class="bi bi-plus-circle"></i>Add Address</a>
+            </div>
+           <hr>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table  table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Address Type</th>
+                            <th>Contect Person</th>
+                            <th>phone</th>
+                            <th>Address</th>                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of addressData">
+                            <td width="30">{{data.addressType}}</td>
+                            <td width="30">{{data.contactPerson}}</td>
+                            <td width="30">{{data.contactNo}}</td>
+                            <td width="30">{{data.address}}</td>                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

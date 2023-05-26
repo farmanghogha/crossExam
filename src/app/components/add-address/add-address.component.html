@@ -1,0 +1,109 @@
+<div class="container">
+  <form  [formGroup]="addadressform" (ngSubmit)="OnSave()" class="shadow-lg border p-3 rounded-3">
+
+    <div class="row">
+      <div class="col text-center p-2 mb-3 ">
+        <span class="fs-3 form-label">Add Address</span>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="mb-3 ">
+          <label class="form-label">User Id</label>
+          <input type="text" formControlName="userId" name="userId" id="userId" class="form-control">
+          <div *ngIf="submitted && formsValidation['userId'].errors">      
+                         <div style="color: red;" *ngIf="formsValidation['userId'].errors['required']">UserId is required</div>                         
+                       </div>
+
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Address Type</label>
+            <select id="addressType" name="addressType" formControlName="addressType" class="form-select">
+                        <option value="" selected disabled> ----Address Type----</option>
+                        <option value="billing"> Billing </option>
+                        <option value="shipping"> Shipping </option>
+            </select>
+          <div *ngIf="submitted && formsValidation['addressType'].errors">      
+                         <div style="color: red;" *ngIf="formsValidation['addressType'].errors['required']">Address Type is required</div>
+                         </div>
+
+        </div>
+        <div class="mb-3 ">
+          <label class="form-label">Country</label>
+          <input type="text" formControlName="country" name="country" id="country" class="form-control">
+          <div *ngIf="submitted && formsValidation['country'].errors">      
+                           <div style="color: red;" *ngIf="formsValidation['country'].errors['required']">country is required</div>                          
+                         </div>
+
+        </div>
+        <div class="mb-3 ">
+          <label class="form-label">City</label>
+          <input type="text" formControlName="city" name="city" id="city" class="form-control">
+          <div *ngIf="submitted && formsValidation['city'].errors">      
+                           <div style="color: red;" *ngIf="formsValidation['city'].errors['required']">City is required</div>                           
+                         </div>
+
+        </div>
+        <div class="mb-3 ">
+          <label class="form-label">Address</label>
+          <input type="text" formControlName="address" name="Address" id="Address" class="form-control">
+          <div *ngIf="submitted && formsValidation['address'].errors">      
+                           <div style="color: red;" *ngIf="formsValidation['address'].errors['required']">Address is required</div>
+                         </div>
+
+        </div>
+      </div>
+
+      <!------------------------------- -->
+      <div class="col-6">
+        <div class=" mb-3 ">
+          <label class="form-label">Contact Person</label>
+          <input type="text" formControlName="contactPerson" name="contactPerson" id="contactPerson"
+            class="form-control">
+          <div *ngIf="submitted && formsValidation['contactPerson'].errors">      
+                           <div style="color: red;" *ngIf="formsValidation['contactPerson'].errors['required']">contect person is required</div>
+                         </div>
+
+        </div>
+        <div class="mb-3 ">
+          <label class="form-label">State</label>
+          <input type="text" formControlName="state" name="state" id="state" class="form-control">
+          <div *ngIf="submitted && formsValidation['state'].errors">      
+                           <div style="color: red;" *ngIf="formsValidation['state'].errors['required']">State is required</div>
+                         </div>
+
+        </div>
+        <div class="mb-3 ">
+          <label class="form-label">PinCode</label>
+          <input type="text" formControlName="pinCode" name="PinCode" id="PinCode" class="form-control">
+          <div *ngIf="submitted && formsValidation['pinCode'].errors">      
+                           <div style="color: red;" *ngIf="formsValidation['pinCode'].errors['required']">Name is required</div>
+                         </div>
+
+        </div>
+        <div class="mb-3 ">
+          <label class="form-label">Contact No</label>
+          <input type="text" formControlName="contactNo" maxlength="10" name="contactNo" id="contactNo" class="form-control">
+          <div *ngIf="submitted && formsValidation['contactNo'].errors">      
+                           <div style="color: red;" *ngIf="formsValidation['contactNo'].errors['required']">Name is required</div>
+                           <div style="color: red;" *ngIf="formsValidation['contactNo'].errors['minlength']">min length is 10 digit..</div>
+                         </div>
+
+        </div>
+      </div>
+    
+
+    </div>
+
+    <div class="row">
+      <div class="col-6 offset-3">
+        <div class="d-grid">
+          <button type="submit" id="btn" class="btn btn-info">Save</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
