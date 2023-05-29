@@ -16,17 +16,36 @@
                             <td width="30">{{product.name}}</td>
                             <td width="30">{{product.description}}</td>
                             <td width="30">{{product.price}}</td>        
-                            <td width="30">{{product.quantity}} <a class="btn"><i class="bi bi-plus-circle" (click)="plusQnt()"></i> </a></td>                      
+                            <td width="30">
+                                <a class="btn"><i class="bi bi-dash-circle-fill"  (click)="minusQnt(product.productid)"></i> </a>
+                                {{product.quantity}} 
+                                <a class="btn"><i class="bi bi-plus-circle-fill" (click)="plusQnt(product.productid)"></i> </a>
+                            </td>                      
                             <td width="30"><i class="bi bi-trash3" style="color:red; height: 20px; " (click)="deletecart(product.productid)"></i></td>
                         </tr>
                     </tbody>
                 
                 </table>
+                <div class="row">
+                    <div class="col">
+                        <select name="address" id="address" #selectedValue (change)="onselect(selectedValue.value)" class="form-control">
+                            <option value="" selected disabled>------select Address------</option>
+                            <option *ngFor="let add of addressList"  value="{{add.addressId}}">{{add.address +','+ add.contactNo + ','+ add.city+','+ add.pinCode}}</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="row text-end">
+                  <p>Total Amount : {{totalprice}}</p>
+                </div>
+                <br>
                 <a class="btn btn-primary" (click)="Orderrequest()">Place Order</a>&nbsp;
                 <a class="btn btn-secondary" routerLink="/createorder">cancel Order</a>
 
             </div>
         </div>
+      
+       
     </div>
 </div>
 

@@ -4,6 +4,8 @@ import { OrdermanageService } from 'src/app/services/ordermanage.service';
 import { Component, OnInit } from '@angular/core';
 
 import { ICreateOrder } from 'src/app/interface/ICreateOrder';
+import { IAddress } from 'src/app/interface/IAdress';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-gotocart',
@@ -13,25 +15,51 @@ import { ICreateOrder } from 'src/app/interface/ICreateOrder';
 export class GotocartComponent implements OnInit {
   
    productlist:IProduct[]=[];
+   addressList:IAddress[]=[];
    order:ICreateOrder={
     email: '',
-    productList:''
+    productList:'',
+    addressId:''
    };
+   selectedValue:'';
+   chooesvalue:any;
+   totalprice:number=0;
+
+   id = Number(localStorage.getItem("id"));
   constructor(
     private OmService:OrdermanageService,
-    private Route:Router
+    private Route:Router,
+    private toastr:ToastrService
     ) { }
 
   ngOnInit(): void {
+    this.totalprice=0;
     var as =JSON.parse(JSON.stringify(localStorage.getItem('productList')));
     var checkdata=JSON.parse(as);
     this.productlist=checkdata;
+
+    this.productlist.forEach(element => {
+      debugger;
+      this.totalprice += element.price * element.quantity;
+    });
+
+    this.OmService.getAddresslist(this.id).subscribe({
+      next:(res)=>{
+        debugger;
+        console.log(res);
+        this.addressList=res.data;
+      }
+    });
   }
 
-
+ // place order...
   Orderrequest(){
+  
+    debugger
+   
    this.order.email=String(localStorage.getItem("user"));
    this.order.productList=this.productlist;
+   this.order.addressId=this.chooesvalue;
 
    if(localStorage.getItem("user")==null){
     this.Route.navigate(['/login']);
@@ -41,6 +69,8 @@ export class GotocartComponent implements OnInit {
       next:(res)=>{
          if(res.status==true){
           localStorage.removeItem("productList");
+          this.toastr.success("Order place successfully......");
+          this.Route.navigate(['/createorder']);
          }
       },
       error:(err)=>{
@@ -50,14 +80,48 @@ export class GotocartComponent implements OnInit {
    }
    
   }
+  // chooes Address for order
+  onselect(value:any){
+    this.chooesvalue=value;
+  }
 
-
-  deletecart(id:any){
-    
+  // Delete product from cart
+  deletecart(id:any){   
+    this.productlist.forEach((element,index)=>{
+      if(element.productid==id) {
+        this.productlist.splice(index, 1);
+        localStorage.setItem("productList",JSON.stringify(this.productlist));
+        this.ngOnInit();
+      }
+   });
 
   }
 
-  plusQnt(){
-   
+  // Incress Quantity of product
+  plusQnt(id:any){
+     debugger;
+    this.productlist.forEach(element => {
+      if(element.productid==id){
+        if(element.quantity<10){
+          element.quantity +=1;        
+        }
+      }
+    });
+    localStorage.setItem("productList",JSON.stringify(this.productlist));
+    this.ngOnInit();
+  }
+
+  // Decress Quantity of product
+  minusQnt(id:any){
+    debugger
+    this.productlist.forEach(element => {
+      if(element.productid==id){
+        if(element.quantity>1){
+          element.quantity -=1;
+        }
+      }
+    });
+    localStorage.setItem("productList",JSON.stringify(this.productlist));
+    this.ngOnInit();
   }
 }
