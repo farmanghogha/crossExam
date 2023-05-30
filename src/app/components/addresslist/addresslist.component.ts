@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IAddress } from 'src/app/interface/IAdress';
 import { OrdermanageService } from 'src/app/services/ordermanage.service';
-
+import {MatTableModule} from '@angular/material/table';
 @Component({
   selector: 'app-addresslist',
   templateUrl: './addresslist.component.html',
@@ -9,6 +9,7 @@ import { OrdermanageService } from 'src/app/services/ordermanage.service';
 })
 export class AddresslistComponent implements OnInit {
   addressData:IAddress[] = []; 
+  displayedColumns: string[] = ['addressType', 'contactPerson', 'contactNo', 'address'];
    id = Number(localStorage.getItem("id"));
   constructor(
     private omService:OrdermanageService,

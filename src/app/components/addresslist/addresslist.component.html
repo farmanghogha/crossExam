@@ -9,8 +9,8 @@
             </div>
            <hr>
         </div>
-        <div class="row">
-            <div class="col">
+        <!-- <div class="row">
+            <div class="col"> 
                 <table class="table  table-bordered table-striped">
                     <thead>
                         <tr>
@@ -28,9 +28,43 @@
                             <td width="30">{{data.address}}</td>                            
                         </tr>
                     </tbody>
-                </table>
+                </table> -->
+
+                <table mat-table [dataSource]="addressData" class="mat-elevation-z8">
+
+                    
+                  
+                    <!-- Address Type Column -->
+                    <ng-container matColumnDef="addressType">
+                      <th mat-header-cell *matHeaderCellDef><h5>Address Type</h5> </th>
+                      <td mat-cell *matCellDef="let element"> {{element.addressType}} </td>
+                    </ng-container>
+                  
+                    <!-- Contect Person Column -->
+                    <ng-container matColumnDef="contactPerson">
+                      <th mat-header-cell *matHeaderCellDef><h5> Contect Person</h5> </th>
+                      <td mat-cell *matCellDef="let element"> {{element.contactPerson}} </td>
+                    </ng-container>
+                  
+                    <!-- Contact Column -->
+                    <ng-container matColumnDef="contactNo">
+                      <th mat-header-cell *matHeaderCellDef> <h5>Phone</h5> </th>
+                      <td mat-cell *matCellDef="let element"> {{element.contactNo}} </td>
+                    </ng-container>
+                  
+                    <!-- Address Column -->
+                    <ng-container matColumnDef="address">
+                      <th mat-header-cell *matHeaderCellDef><h5> Address</h5> </th>
+                      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+                    </ng-container>
+                  
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                  
+<!-- 
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 

@@ -15,6 +15,7 @@ import { AddresslistComponent } from './components/addresslist/addresslist.compo
 import { OrderlistComponent } from './components/orderlist/orderlist.component';
 import { CreateorderComponent } from './components/createorder/createorder.component';
 import { GotocartComponent } from './components/gotocart/gotocart.component';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { GotocartComponent } from './components/gotocart/gotocart.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatTableModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-top-right',

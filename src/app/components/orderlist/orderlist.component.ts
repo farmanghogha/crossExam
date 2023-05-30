@@ -10,6 +10,7 @@ import { OrdermanageService } from 'src/app/services/ordermanage.service';
 })
 export class OrderlistComponent implements OnInit {
   orderlist:IOrder[]=[];
+  displayedColumns: string[] = ['name', 'email', 'statusType','orderDate', 'totalAmount'];
   email:any=localStorage.getItem("user");
   constructor(
     private omService:OrdermanageService

@@ -22,8 +22,9 @@ export class GotocartComponent implements OnInit {
     addressId:''
    };
    selectedValue:'';
-   chooesvalue:any;
+   chooesvalue:any=0;
    totalprice:number=0;
+   erromessage='';
 
    id = Number(localStorage.getItem("id"));
   constructor(
@@ -60,6 +61,12 @@ export class GotocartComponent implements OnInit {
    this.order.email=String(localStorage.getItem("user"));
    this.order.productList=this.productlist;
    this.order.addressId=this.chooesvalue;
+   
+   if(this.chooesvalue==0) {
+    this.erromessage="Must select Address.....";
+    return; 
+   } 
+
 
    if(localStorage.getItem("user")==null){
     this.Route.navigate(['/login']);
