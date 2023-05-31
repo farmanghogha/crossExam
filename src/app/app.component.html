@@ -1,25 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark " id="homedata" *ngIf="router.url != '/register' && router.url != '/login' && router.url != '/'">
-  <a class="navbar-brand m-2" style="color:white">Navbar</a>
-  <a class="btn" *ngIf="isauthonticate()" routerLink="/home" style="color:white" ><i class="bi bi-house-door" style="color:aqua"></i> Home </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark " id="homedata"
+  *ngIf="router.url != '/register' && router.url != '/login' && router.url != '/'">
+  <a class="navbar-brand m-2" style="color:white"></a>
+  <a class="btn" *ngIf="isauthonticate()" routerLink="/home" style="color:white"><i class="bi bi-house-door"
+      style="color:aqua"></i> Home </a>
   <!-- <a class="btn" *ngIf="isauthonticate()" routerLink="/addadress"  style="color:white" >Add Address </a> -->
-  <a class="btn" *ngIf="isauthonticate()" routerLink="/addresslist"  style="color:white" ><i class="bi bi-card-list" style="color:aqua"></i> Address list </a>
-  <a class="btn" *ngIf="isauthonticate()" routerLink="/orderlist"  style="color:white" ><i class="bi bi-card-list" style="color:aqua"></i> Order list </a>
-  <a class="btn" *ngIf="isauthonticate()" routerLink="/createorder"  style="color:white" ><i class="bi bi-plus-circle-dotted" style="color:aqua"></i> create Order</a>
-  <a class="btn" *ngIf="isauthonticate()" routerLink="/gotocart"  style="color:white" ><i class="bi bi-cart-dash" style="color:aqua"></i> Goto Cart</a>
+  <a class="btn" *ngIf="isauthonticate()" routerLink="/createorder" style="color:white"><i
+      class="bi bi-plus-circle-dotted" style="color:aqua"></i> Products</a>
+  <a class="btn" *ngIf="isauthonticate()" routerLink="/addresslist" style="color:white"><i class="bi bi-card-list"
+      style="color:aqua"></i> My Address </a>
+  <a class="btn" *ngIf="isauthonticate()" routerLink="/orderlist" style="color:white"><i class="bi bi-card-list"
+      style="color:aqua"></i> My Orders </a>
 
-  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" >
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto ">
-          
-           
+
+
     </ul>
-    <ul class="navbar-nav">      
-        <a class="btn btn-success m-2" *ngIf="isauthonticate()==false" routerLink="/login" ><i class="bi bi-box-arrow-in-right"></i> Login</a> 
-        <a class="btn btn-danger m-2" *ngIf="isauthonticate()"  (click)="logout()"> <i class="bi bi-box-arrow-left"></i> Logout</a> 
-           
+    <ul class="navbar-nav">
+
+      <a class="btn m-2" *ngIf="isauthonticate()" routerLink="/gotocart" style="color:white"><i class="bi bi-cart-dash"
+          style="color:aqua"></i> Cart</a>
+      <a class="btn btn-success m-2" *ngIf="isauthonticate()==false" routerLink="/login"> Login</a>
+      <a class="btn btn-danger m-2" *ngIf="isauthonticate()" (click)="logout()"><i class="bi bi-box-arrow-in-right"></i>
+        Logout</a>
+
     </ul>
-    
+
   </div>
 
-  
+
 </nav>
 <router-outlet></router-outlet>

@@ -32,7 +32,7 @@
           <input type="email" formControlName="phone" maxlength="10" name="phone" id="phone" class="form-control">
           <div *ngIf="submitted && formsValidation['phone'].errors">
             <div style="color: red;" *ngIf="formsValidation['phone'].errors['required']">Phone no is required</div>
-            <div style="color: red;" *ngIf="formsValidation['phone'].errors['mexlength']">min length 10 digit....</div>
+            <div style="color: red;" *ngIf="formsValidation['phone'].errors['pattern']">Invalid Number.....</div>
           </div>
         </div>
       </div>
