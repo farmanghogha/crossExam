@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
 
             }
             else{
-              this.toastr.error("somthing wents wrong....");
+              this.toastr.error("Invalid Username & password....");
            }
           }
         },

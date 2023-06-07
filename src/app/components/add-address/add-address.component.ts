@@ -22,8 +22,8 @@ export class AddAddressComponent implements OnInit {
   ngOnInit(): void {
     this.addadressform = this.fb.group({     
       userId:['',[Validators.required]],
-      contactNo:['',[Validators.required,Validators.minLength(10)]],
-      contactPerson:['',[Validators.required]],
+      contactNo:['',[Validators.required,Validators.minLength(10),Validators.pattern("^[0-9]*$")]],
+      contactPerson:['',[Validators.required,Validators.pattern(/^\S+(\s+\S+)*$/)]],
       pinCode :['',[Validators.required]],
       city:['',[Validators.required]],
       state:['',[Validators.required]],

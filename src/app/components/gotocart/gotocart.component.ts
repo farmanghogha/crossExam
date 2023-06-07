@@ -57,7 +57,7 @@ export class GotocartComponent implements OnInit {
   Orderrequest(){
   
     debugger
-   
+
    this.order.email=String(localStorage.getItem("user"));
    this.order.productList=this.productlist;
    this.order.addressId=this.chooesvalue;
